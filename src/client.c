@@ -326,3 +326,18 @@ int clientRecvEmpty(struct client *c)
 	RESPONSE(empty, EMPTY);
 	return 0;
 }
+
+int clientSendLeader(struct client *c) {
+        struct request_leader request;
+        REQUEST(leader, LEADER);
+        return 0;
+}
+
+int clientRecvLeader(struct client *c, char *address, uint64_t *id) {
+        struct response_server response;
+        RESPONSE(server, SERVER);
+        strncpy(address, response.address, strlen(response.address));
+        *id = response.id;
+        return 0;
+}
+
