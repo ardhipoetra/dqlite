@@ -11,8 +11,6 @@
 #define DQLITE_MISUSE 2 /* Library used incorrectly */
 #define DQLITE_NOMEM 3  /* A malloc() failed */
 
-#define EMMC_NDUR 3000000000
-
 /**
  * Dqlite node handle.
  *
@@ -56,17 +54,6 @@ int dqlite_node_create(dqlite_node_id id,
 		       const char *address,
 		       const char *data_dir,
 		       dqlite_node **n);
-
-/**
- * Create a new dqlite node object with custom emmc server address
- */
-int dqlite_node_create_wemmc(dqlite_node_id id,
-		       const char *address,
-		       const char *data_dir,
-		       dqlite_node **n,
-			   const char *emmc_sv,
-			   int emmc_port);
-
 
 /**
  * Destroy a dqlite node object.

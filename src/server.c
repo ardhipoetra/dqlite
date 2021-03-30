@@ -146,29 +146,6 @@ void dqlite__close(struct dqlite_node *d)
 	}
 }
 
-int dqlite_node_create_wemmc(dqlite_node_id id,
-		       const char *address,
-		       const char *data_dir,
-		       dqlite_node **t,
-			   const char *emmc_sv,
-			   int emmc_port)
-{
-	int rv;
-
-	*t = sqlite3_malloc(sizeof **t);
-	if (*t == NULL) {
-		return DQLITE_NOMEM;
-	}
-
-	set_emmc_server(&(*t)->raft, emmc_sv, emmc_port, EMMC_NDUR);
-	rv = dqlite__init(*t, id, address, data_dir);
-	if (rv != 0) {
-		return rv;
-	}
-
-	return 0;
-}
-
 int dqlite_node_create(dqlite_node_id id,
 		       const char *address,
 		       const char *data_dir,
